@@ -1,25 +1,9 @@
-<?
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
 
 //ini_set("MAX_EXECUTION_TIME", "1600000");
-set_time_limit(1600000); 
-
-include 'number_conversion.php';
-include 'prime_factorization.php';
-include 'binary_modulus.php';
-include 'binary_division.php';
-include 'trigonometry.php';
-include 'search.php';
-include 'root_solver.php';
-include 'quadratic_solver.php';
-include 'prime_detection.php';
-include 'parse_object.php';
-include 'evaluation_parse.php';
-include 'm_vector.php';
-include 'factorial.php';
-include 'division.php';
-include 'arithematic.php';
-include '_vector.php';
-include 'evaluation.php';
+set_time_limit(1600000);
 
 $evaluation = new NumEval\evaluation();
 
@@ -30,13 +14,10 @@ var_dump($result);
 $result = $evaluation->prime_factors_alt("1116875290037");
 var_dump($result);
 
-
 $parse = new NumEval\evaluation_parse("2+2", $evaluation);
 $result = $parse->parse("0");
 
 var_dump($result);
-
-
 
 //improving precision of roots using periodic continued fraction
 /*$square_root = $evaluation->power(array('value' => '7', 'remainder' => '0/1'), array('value' => '0', 'remainder' => '1/2'));
@@ -66,9 +47,6 @@ var_dump($cos);
 /*$cos = $this->evaluation->trigonometry->cosine($radian_common_value);
 $cos = $this->evaluation->quick_numeric($cos);*/
 
-
 /*
 	For more examples visit http://noob.software/support/#index/app_instructions#3&
 */
-
-?>

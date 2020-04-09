@@ -1,0 +1,27 @@
+{
+  "name": "josecelano/NumEval",
+  "description": "PHP library for Numerical Evaluation with complete precision, with no rounding errors. No limit is set on the number of digits of values.",
+  "type": "library",
+  "require-dev": {
+    "phpunit/phpunit": "^9.0"
+  },
+  "authors": [
+    {
+      "name": "Jose Celano",
+      "email": "josecelano@gmail.com"
+    },
+    {
+      "name": "Noob Software"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "NumEval\\": "src/NumEval"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\NumEval\\": "tests/NumEval"
+    }
+  }
+}

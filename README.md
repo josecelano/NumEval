@@ -110,3 +110,36 @@ Quadratic_solver solves quadratic equations using numeval.
 Arithematic is for delaying resolving roots and powers until the end of arithematic which can be useful for maximum precision.
 
 NumEval is also available as a NuGet package: https://www.nuget.org/packages/NumEval/
+
+### Installation
+
+```
+docker build -t numeval .
+docker run -it --rm \
+	-v "$PWD":/usr/src/app \
+	-w /usr/src/app \
+	-u $(id -u ${USER}):$(id -g ${USER}) \
+	numeval \
+    composer install
+```
+
+## Running the tests
+
+```
+docker run -it --rm \
+	-v "$PWD":/usr/src/app \
+	-w /usr/src/app \
+	-u $(id -u ${USER}):$(id -g ${USER}) \
+	numeval
+```
+
+## Run sample
+
+```
+docker run -it --rm \
+	-v "$PWD":/usr/src/app \
+	-w /usr/src/app \
+	-u $(id -u ${USER}):$(id -g ${USER}) \
+	numeval \
+    php numeval_test.php
+```
