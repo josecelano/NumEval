@@ -16,7 +16,7 @@ class Evaluation {
     private $binary_modulus;
 
     function __construct() {
-        $this->trigonometry = new trigonometry($this);
+        $this->trigonometry = new Trigonometry($this);
         $this->division = new Division($this);
         $this->binary_modulus = new BinaryModulus($this, "0");
     }

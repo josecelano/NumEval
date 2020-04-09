@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class trigonometry {
+class Trigonometry {
 
     private $evaluation;
     private $vector;
