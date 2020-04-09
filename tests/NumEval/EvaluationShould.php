@@ -2,12 +2,12 @@
 
 namespace Tests\NumEval;
 
-use NumEval\evaluation;
+use NumEval\Evaluation;
 
 class EvaluationShould extends BaseTestClass {
     /** @test */
     public function compute_pi() {
-        $evaluation = new evaluation();
+        $evaluation = new Evaluation();
         $result = $evaluation->trigonometry->compute_pi(4);
 
         $this->assertEquals(

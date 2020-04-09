@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class m_vector {
+class Vector {
 
     private $evaluation;
 
@@ -41,6 +41,24 @@ class m_vector {
         return $vector;
     }
 
+    /*function degree_difference($deg1, $deg2) {
+        if($deg1 < 0) {
+            $deg1 = 360 + $deg1;
+        }
+        if($deg2 < 0) {
+            $deg2 = 360 + $deg2;
+        }
+        $result = $deg1 - $deg2;
+        return abs($result);
+    }
+
+    function reset_distance($point, $fraction) {
+
+        $vector = array($point[0], $point[1]);
+        $vector[0] *= $fraction;
+        $vector[1] *= $fraction;
+        return $vector;
+    }*/
     function reverse_vector($v) {
         $u = array($this->evaluation->negative_value($v[0]), $this->evaluation->negative_value($v[1]));
         return $u;
@@ -77,7 +95,7 @@ class m_vector {
         return $vector;
     }
 
-    function vector_distance($u, $v = array(0, 0)) {
+    function vector_distance($u, $v = array(array('value' => 0, 'remainder' => '0/1'), array('value' => '0', 'remainder' => '0/1'))) {
         /*if(!isset($v)) {
             $v = array(0, 0);
         }*/
@@ -99,6 +117,7 @@ class m_vector {
     }
 
     function distance($x_from, $y_from, $x_to = array('value' => 0, 'remainder' => '0/1'), $y_to = array('value' => 0, 'remainder' => '0/1')) {
+        //$value = sqrt(pow(($x_from - $x_to), 2)+pow(($y_from - $y_to), 2));
         $term_a = $this->evaluation->subtract_total($x_from, $x_to);
         $term_a = $this->evaluation->execute_power_whole($term_a, array('value' => '2', 'remainder' => '0/1'));
 
@@ -106,7 +125,8 @@ class m_vector {
         $term_b = $this->evaluation->execute_power_whole($term_b, array('value' => '2', 'remainder' => '0/1'));
 
         $total_term = $this->evaluation->add_total($term_a, $term_b);
-        $value = $this->evaluation->execute_power($total_term, "2");
+        $value = $this->evaluation->whole_common(sqrt($this->evaluation->quick_numeric($total_term)));
+        //$value = $this->evaluation->execute_power($total_term, "2");
 
         return $value;
     }
@@ -116,7 +136,7 @@ class m_vector {
     }
 
     function normalize_vector($v) {
-        $length = $this->vector_distance($v, array(0, 0));
+        $length = $this->vector_distance($v);
         if ($length == 0) {
             return $v;
         }
@@ -164,5 +184,11 @@ class m_vector {
     function rotate($u, $clockwise = true) {
         $v = array($u[1], $this->evaluation->negative_value($u[0]));
         return $v;
+    }
+
+    function shorten_vector($vector) {
+        $vector[0]['remainder'] = $this->evaluation->execute_shorten_fraction($vector[0]['remainder']);
+        $vector[1]['remainder'] = $this->evaluation->execute_shorten_fraction($vector[1]['remainder']);
+        return $vector;
     }
 }

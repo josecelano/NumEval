@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class evaluation_parse {
+class EvaluationParse {
     public $evaluation;
     private $function;
     private $parse_error_variables;
@@ -10,7 +10,7 @@ class evaluation_parse {
 
     function __construct($function, $evaluation = NULL) {
         if ($evaluation == NULL) {
-            $this->evaluation = new evaluation();
+            $this->evaluation = new Evaluation();
         } else {
             $this->evaluation = $evaluation;
         }
@@ -445,7 +445,7 @@ class evaluation_parse {
         $this->function = $this->multiplication_paranthesis($this->function);
         $func_str = $this->function;
         $token;
-        $parse_tree = parse_object::init(NULL);
+        $parse_tree = ParseObject::init(NULL);
         $last_parse = NULL;
         $symbols = array();
         $next_symbol = '?';
@@ -547,7 +547,7 @@ class evaluation_parse {
                 $paranthesis_list[] = $p;
             } else if ($counter + 1 < count($children)) {
                 if ($children[$counter + 1]->get_symbol() == '*') {
-                    $lug = new parse_object("clone", $p);
+                    $lug = new ParseObject("clone", $p);
                     $lug->set_symbol('*');
                     $lug->value = array();
                     $lug->children = array();
@@ -584,7 +584,7 @@ class evaluation_parse {
                     if ($lug_count == 0) {
                         $p->add_object($l);
                     } else {
-                        $addition = new parse_object("clone", $p);
+                        $addition = new ParseObject("clone", $p);
                         $addition->children = array();
                         $addition->set_symbol('+');
                         $addition->add_object($l);

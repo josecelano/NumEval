@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class factorial {
+class Factorial {
 
     private $value;
     private $evaluation;

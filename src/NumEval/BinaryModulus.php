@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class binary_modulus {
+class BinaryModulus {
 
     private $value;
 
@@ -16,7 +16,7 @@ class binary_modulus {
         $this->value = $value;
         $this->division_value = array();
 
-        $this->binary_division = new binary_division($this->evaluation);
+        $this->binary_division = new BinaryDivision($this->evaluation);
     }
 
     private $auxillary_verification_strength = "1000";

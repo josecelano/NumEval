@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class evaluation {
+class Evaluation {
     private $term_a;
     private $term_b;
     protected $sql;
@@ -17,8 +17,8 @@ class evaluation {
 
     function __construct() {
         $this->trigonometry = new trigonometry($this);
-        $this->division = new division($this);
-        $this->binary_modulus = new binary_modulus($this, "0");
+        $this->division = new Division($this);
+        $this->binary_modulus = new BinaryModulus($this, "0");
     }
 
     function set_configuration($truncate_fractions_length = 0, $logarithm_iteration_count = 12, $root_fraction_precision = array('value' => '0', 'remainder' => '1/100'), $disable_built_in_approximation = false, $sine_precision = 10, $set_continued_fraction_resolution_level_setting = 12, $disable_exact_root_results = false) {
@@ -1621,7 +1621,7 @@ class evaluation {
 
 
     function factorial($value) {
-        $factorial = new factorial($value, $this);
+        $factorial = new Factorial($value, $this);
         $resolution = $factorial->resolve();
         return $resolution;
     }
@@ -2100,7 +2100,7 @@ class evaluation {
             $p = $this->root_fraction_precision;
         }
         $whole = $this->whole_numerator($number);
-        $root_solver = new root_solver($whole, $root, $this);
+        $root_solver = new RootSolver($whole, $root, $this);
         $num = $root_solver->approximate_value();
 
         $x[0] = $num;
@@ -2193,7 +2193,7 @@ class evaluation {
     }
 
     function find_continued_fraction($value, $power, $limit, $precision = NULL) {
-        $root_solver = new root_solver(NULL, $power, $this);
+        $root_solver = new RootSolver(NULL, $power, $this);
         $result = $root_solver->solve_root($value, $limit, $precision);
         return $result;
     }
@@ -2684,25 +2684,25 @@ class evaluation {
     }
 
     function factor_root($value, $power) {
-        $root_solver = new root_solver($this->whole_numerator($value), $power, $this);
+        $root_solver = new RootSolver($this->whole_numerator($value), $power, $this);
         $result = $root_solver->factor_root();
         return $result;
     }
 
     function solve_remainder_square($value, $remainder_squared) {
-        $root_solver = new root_solver(NULL, NULL, $this);
+        $root_solver = new RootSolver(NULL, NULL, $this);
         $result = $root_solver->solve_r_square($value, $remainder_squared);
         return $result;
     }
 
     function reuse_square_root($value, $known_root) {
-        $root_solver = new root_solver($this->whole_numerator($value), 2, $this);
+        $root_solver = new RootSolver($this->whole_numerator($value), 2, $this);
         $result = $root_solver->solve($known_root);
         return $result;
     }
 
     function root_by_denominator($value, $denominator_root, $power) {
-        $root_solver = new root_solver($this->whole_numerator($value), $power, $this);
+        $root_solver = new RootSolver($this->whole_numerator($value), $power, $this);
         $result = $root_solver->root_by_denominator($denominator_root);
         return $result;
     }
@@ -3490,7 +3490,7 @@ class evaluation {
         $lower_bound = $approximate_value - $variance;
         if ($power == 2) {
             $base_squared = $this->result($base_root, $base_root);
-            $search = new search(array(
+            $search = new Search(array(
                 'base_root' => $base_root,
                 'base_squared' => $base_squared,
                 'value' => $value,
@@ -3540,7 +3540,7 @@ class evaluation {
             $root = array('value' => $base_root, 'remainder' => $result['variables']['a'] . "/" . $result['variables']['b']);
             return $root;
         } else {
-            $search = new search(array(
+            $search = new Search(array(
                 'base_root' => $base_root,
                 'value' => $value,
                 'upper_bound' => $upper_bound,
@@ -4935,7 +4935,7 @@ class evaluation {
         if ($value == 0) {
             return array();
         }
-        $prime_factorization = new prime_factorization($this);
+        $prime_factorization = new PrimeFactorization($this);
         return $prime_factorization->factor($value);
     }
 
@@ -5676,7 +5676,7 @@ class evaluation {
             return "1";
         }
         if ($base == "10") {
-            $number_conversion = new number_conversion($this);
+            $number_conversion = new NumberConversion($this);
             return $number_conversion->convert($value, $new_base);
         }
         $digits = str_split($value);
@@ -5969,7 +5969,7 @@ class evaluation {
     private $prime_maximum_value = NULL;
 
     function prime_p($value) {
-        $prime_detection = new prime_detection($value, $this);
+        $prime_detection = new PrimeDetection($value, $this);
         return $prime_detection->pollard_check($value);
     }
 
@@ -6004,7 +6004,7 @@ class evaluation {
         }
 
         if ($this->prime_sum_verification($value) && in_array($last_value, $this->valid_prime_last_character)) {
-            $prime_detection = new prime_detection($value, $this);
+            $prime_detection = new PrimeDetection($value, $this);
 
             $sub_prime = substr($value, 1);
             $digit_sum = $this->digit_sum($value);
@@ -6104,7 +6104,7 @@ class evaluation {
         }
 
         if ($this->prime_sum_verification($value) && in_array($last_value, $this->valid_prime_last_character)) {
-            $prime_detection = new prime_detection($value, $this);
+            $prime_detection = new PrimeDetection($value, $this);
 
             $sub_prime = substr($value, 1);
             $digit_sum = $this->digit_sum($value);
@@ -6882,7 +6882,7 @@ class evaluation {
     }
 
     private function prime_root_alternating($value) {
-        $prime_detection = new prime_detection($value, $this);
+        $prime_detection = new PrimeDetection($value, $this);
         return $prime_detection->root_alternating($this->prime_second_root[$value]);
     }
 

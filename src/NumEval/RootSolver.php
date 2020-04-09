@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class root_solver {
+class RootSolver {
     private $value;
     private $power;
     private $evaluation;

@@ -11,9 +11,9 @@ class trigonometry {
         if ($evaluation != NULL) {
             $this->evaluation = $evaluation;
         } else {
-            $this->evaluation = new evaluation();
+            $this->evaluation = new Evaluation();
         }
-        $this->vector = new _vector($this->evaluation);
+        $this->vector = new Vector($this->evaluation);
     }
 
     private $accuracy;

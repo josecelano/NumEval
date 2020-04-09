@@ -2,14 +2,14 @@
 
 namespace NumEval;
 
-class prime_factorization {
+class PrimeFactorization {
 
     private $evaluation;
     private $binary_modulus;
 
     function __construct($evaluation) {
         $this->evaluation = $evaluation;
-        $this->binary_modulus = new binary_modulus($this->evaluation, "0");
+        $this->binary_modulus = new BinaryModulus($this->evaluation, "0");
     }
 
     private $prime_factors = array();
@@ -84,7 +84,7 @@ class prime_factorization {
     private $marked_intervals = array();
 
     function find_interval($value) {
-        $binary_modulus = new binary_modulus($this->evaluation, "0");
+        $binary_modulus = new BinaryModulus($this->evaluation, "0");
 
         $maximum_interval = $this->find_interval_range($value);
 

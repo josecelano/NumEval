@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class number_conversion {
+class NumberConversion {
 
     private $evaluation;
 

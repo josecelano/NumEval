@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class division {
+class Division {
 
     private $value;
     private $divider;

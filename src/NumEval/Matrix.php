@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class matrix {
+class Matrix {
 
     private $evaluation;
 

@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class parse_object {
+class ParseObject {
     public $children;
     private $parent;
     public $value;
@@ -118,7 +118,7 @@ class parse_object {
     }
 
     function child() {
-        $this->children[] = parse_object::init($this);
+        $this->children[] = ParseObject::init($this);
         return $this->list_top();
     }
 

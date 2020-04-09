@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class arithematic {
+class Arithematic {
     private $value = array(
         array(
             '3' => array(
@@ -25,7 +25,7 @@ class arithematic {
         if ($evaluation != NULL) {
             $this->evaluation = $evaluation;
         } else {
-            $this->evaluation = new evaluation();
+            $this->evaluation = new Evaluation();
         }
     }
 

@@ -5,7 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 //ini_set("MAX_EXECUTION_TIME", "1600000");
 set_time_limit(1600000);
 
-$evaluation = new NumEval\evaluation();
+$evaluation = new NumEval\Evaluation();
 
 $result = $evaluation->add("2", "2");
 
@@ -14,7 +14,7 @@ var_dump($result);
 $result = $evaluation->prime_factors_alt("1116875290037");
 var_dump($result);
 
-$parse = new NumEval\evaluation_parse("2+2", $evaluation);
+$parse = new NumEval\EvaluationParse("2+2", $evaluation);
 $result = $parse->parse("0");
 
 var_dump($result);

@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class quadratic_solver {
+class QuadraticSolver {
 
     private $a;
     private $b;

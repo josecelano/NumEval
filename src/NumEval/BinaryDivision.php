@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class binary_division {
+class BinaryDivision {
 
     private $evaluation;
 

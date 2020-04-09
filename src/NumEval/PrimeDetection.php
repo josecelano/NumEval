@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class prime_detection {
+class PrimeDetection {
 
     private $value;
     private $evaluation;

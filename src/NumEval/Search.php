@@ -2,7 +2,7 @@
 
 namespace NumEval;
 
-class search {
+class Search {
 
     private $variables;
     private $constraints;
